@@ -1,6 +1,66 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# OpenWeb RN Sample 0.81.1
 
-# Getting Started
+React Native 0.81.1 sample app for testing OpenWeb SDK integration. Supports both Old (Paper/Bridge) and New (Fabric/TurboModules) architectures.
+
+## Purpose
+
+This POC validates:
+
+- Minimum RN version compatibility for OpenWeb SDK
+- Old and New Architecture support
+- yalc-based local SDK development workflow
+
+## Project Structure
+
+```
+src/
+├── screens/
+│   └── HomeScreen.tsx          # Main screen with spotId/postId inputs
+├── features/
+│   └── conversation/
+│       ├── components/
+│       │   ├── PreConversation.tsx   # Comment count preview
+│       │   └── Conversation.tsx      # Full conversation view
+│       ├── services/
+│       │   └── OpenWebConversation.ts # SDK service layer
+│       └── types.ts
+└── config/
+```
+
+## Setup with yalc
+
+### 1. Install yalc globally
+
+```bash
+npm install -g yalc
+```
+
+### 2. Publish SDK locally (in SDK directory)
+
+```bash
+cd /path/to/openweb-react-native-sdk
+yalc publish
+```
+
+### 3. Add SDK to this project
+
+```bash
+cd /Users/kst/OpenWeb/Side_Projects/OpenWebRnSample081
+yalc add react-native-openweb-sdk
+yarn install
+```
+
+### 4. Update SDK after changes
+
+```bash
+# In SDK directory
+yalc push
+
+# In this project
+yarn update-sdk
+```
+
+## Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 

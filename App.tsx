@@ -1,45 +1,45 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, {useEffect, useState} from 'react';
+import {ScrollView, Text} from 'react-native';
+import {OpenWeb, OpenWebPreConversation} from 'react-native-openweb-sdk';
+// @ts-ignore
+import {version as rnVersion} from 'react-native/package.json';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+function App(): React.JSX.Element {
+  const [spotId] = useState('sp_eCIlROSD');
+  const [postId] = useState('sdk1');
+  const [sdkReady, setSdkReady] = useState(false);
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    console.log('🔧 Initializing OpenWeb SDK...');
+    console.log('spotId:', spotId);
+    console.log('postId:', postId);
+    try {
+      OpenWeb.manager.setSpotId(spotId);
+      setSdkReady(true);
+      console.log('✅ SDK initialized successfully');
+    } catch (e: any) {
+      console.error('❌ SDK init failed:', e?.message, e);
+    }
+  }, [spotId]);
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
+  console.log('🎨 Rendering App - sdkReady:', sdkReady);
 
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
+    <>
+      <Text style={{padding: 10, paddingTop: 60, fontSize: 12, fontWeight: 'bold', color: '#666'}}>
+        RN Version: {rnVersion} | Architecture: {(global as any).nativeFabricUIManager != null ? 'New (Fabric)' : 'Old (Paper)'}
+      </Text>
+      <Text style={{padding: 10, fontSize: 12, color: sdkReady ? 'green' : 'red'}}>
+        SDK Status: {sdkReady ? '✅ Ready' : '❌ Not Ready'}
+      </Text>
+      <ScrollView>
+        <OpenWebPreConversation
+          postId={postId}
+          style={{minHeight: 400}}
+        />
+      </ScrollView>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
