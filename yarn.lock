@@ -7073,7 +7073,7 @@ __metadata:
     prettier: 2.8.8
     react: 19.1.0
     react-native: 0.81.1
-    react-native-openweb-sdk: "file:.yalc/react-native-openweb-sdk"
+    react-native-openweb-sdk: ^1.0.0
     react-native-safe-area-context: ^5.5.2
     react-test-renderer: 19.1.0
     typescript: ^5.8.3
@@ -7452,13 +7452,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-openweb-sdk@file:.yalc/react-native-openweb-sdk::locator=openwebrnsample081%40workspace%3A.":
-  version: 0.1.0
-  resolution: "react-native-openweb-sdk@file:.yalc/react-native-openweb-sdk#.yalc/react-native-openweb-sdk::hash=3cb6b7&locator=openwebrnsample081%40workspace%3A."
+"react-native-openweb-sdk@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "react-native-openweb-sdk@npm:1.0.0"
   peerDependencies:
     react: ">=18.2.0"
     react-native: ">=0.74.0"
-  checksum: e456152b0dddbcacf437dcbf62fdf6a175e3a0210ca6a82aa153e0ed4ee9c2e508a83edf3c7ac271e6c6fd0c9bcaf35d1ee6cc274f9ed3b65b02b521bf5d4272
+  checksum: f268fc5e8a039298e722843fe19cf34997d5ca43753dbb1195151ca7b0b61c2cc07745311f2c9ddafa37d2c76bb2c70dce00e5efc39d3d41a4d9ed4a46f28cf1
   languageName: node
   linkType: hard
 

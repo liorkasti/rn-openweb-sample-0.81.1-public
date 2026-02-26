@@ -9,14 +9,13 @@
     "start": "react-native start",
     "test": "jest",
     "arch": "node scripts/switch-architecture.js",
-    "android:clean": "cd android && ./gradlew clean",
-    "update-sdk": "yalc update react-native-openweb-sdk && cd android && ./gradlew clean && ./gradlew generateCodegenArtifactsFromSchema && echo '✅ SDK updated and cleaned - ready to build in Android Studio'"
+    "android:clean": "cd android && ./gradlew clean"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.81.1",
     "react": "19.1.0",
     "react-native": "0.81.1",
-    "react-native-openweb-sdk": "file:.yalc/react-native-openweb-sdk",
+    "react-native-openweb-sdk": "^1.0.0",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {

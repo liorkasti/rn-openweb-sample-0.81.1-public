@@ -6,59 +6,61 @@ React Native 0.81.1 sample app for testing OpenWeb SDK integration. Supports bot
 
 This POC validates:
 
-- Minimum RN version compatibility for OpenWeb SDK
-- Old and New Architecture support
-- yalc-based local SDK development workflow
+- Minimum RN version compatibility for OpenWeb SDK (RN 0.81.1)
+- Old Architecture (Paper/Bridge) support
+- New Architecture (Fabric/TurboModules) support
+- Published npm package integration
 
-## Project Structure
+## Branches
 
-```
-src/
-├── screens/
-│   └── HomeScreen.tsx          # Main screen with spotId/postId inputs
-├── features/
-│   └── conversation/
-│       ├── components/
-│       │   ├── PreConversation.tsx   # Comment count preview
-│       │   └── Conversation.tsx      # Full conversation view
-│       ├── services/
-│       │   └── OpenWebConversation.ts # SDK service layer
-│       └── types.ts
-└── config/
-```
+- **`main`**: Uses published npm package `react-native-openweb-sdk`
+- **`local/yalc-openweb-sdk`**: Uses yalc for local SDK development
 
-## Setup with yalc
+## Installation
 
-### 1. Install yalc globally
+### 1. Clone the repository
 
 ```bash
-npm install -g yalc
+git clone https://github.com/liorkasti/rn-openweb-sample-0.81.1-public.git
+cd rn-openweb-sample-0.81.1-public
 ```
 
-### 2. Publish SDK locally (in SDK directory)
+### 2. Install dependencies
 
 ```bash
-cd /path/to/openweb-react-native-sdk
-yalc publish
-```
-
-### 3. Add SDK to this project
-
-```bash
-cd /Users/kst/OpenWeb/Side_Projects/OpenWebRnSample081
-yalc add react-native-openweb-sdk
 yarn install
 ```
 
-### 4. Update SDK after changes
+### 3. Install iOS dependencies
 
 ```bash
-# In SDK directory
-yalc push
-
-# In this project
-yarn update-sdk
+bundle install
+cd ios && bundle exec pod install && cd ..
 ```
+
+## Architecture Switching
+
+This project supports both React Native architectures. Use the built-in script to switch:
+
+### Check current architecture
+
+```bash
+yarn arch status
+```
+
+### Switch to Old Architecture (Paper)
+
+```bash
+yarn arch old
+```
+
+### Switch to New Architecture (Fabric)
+
+```bash
+yarn arch new
+```
+
+**Note**: After switching architectures, you need to rebuild the app.
 
 ## Getting Started
 
@@ -141,6 +143,42 @@ You've successfully run and modified your React Native App. :partying_face:
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+
+## Local SDK Development (yalc)
+
+For local SDK development, switch to the `local/yalc-openweb-sdk` branch:
+
+```bash
+git checkout local/yalc-openweb-sdk
+```
+
+### Setup yalc
+
+1. Install yalc globally:
+
+```bash
+npm install -g yalc
+```
+
+2. In the SDK repository, publish locally:
+
+```bash
+cd /path/to/react-native-openweb-sdk
+yalc publish
+```
+
+3. In this project, link the local SDK:
+
+```bash
+yalc add react-native-openweb-sdk
+yarn install
+```
+
+4. Update SDK after changes:
+
+```bash
+yarn update-sdk
+```
 
 # Troubleshooting
 
